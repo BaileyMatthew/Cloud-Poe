@@ -19,7 +19,7 @@ public class StoreController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddCustomer(CustomerEntity customer)
+    public async Task<IActionResult> AddCustomer(CustomerEntity customer) 
     {
         if (ModelState.IsValid)
         {
