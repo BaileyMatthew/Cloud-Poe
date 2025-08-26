@@ -1,0 +1,59 @@
+﻿@model IEnumerable<abcRetail.Models.ProductEntity>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Product Management</h1>
+
+<p>
+
+</p>
+
+<hr />
+
+<h4>Add New Product</h4>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="AddProduct" enctype="multipart/form-data" method="post">
+            <div class="form-group">
+                <label for="ProductName" class="control-label">Product Name</label>
+                <input name="ProductName" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="Description" class="control-label">Description</label>
+                <textarea name="Description" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="Price" class="control-label">Price</label>
+                <input name="Price" class="form-control" type="number" step="0.01" required />
+            </div>
+            <div class="form-group">
+                <label for="ImageFile" class="control-label">Product Image</label>
+                <input name="ImageFile" type="file" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Product" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+
+<h4>Available Products</h4>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="@item.ImageUrl" class="card-img-top" alt="@item.ProductName" style="max-height: 200px; object-fit: contain;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.ProductName</h5>
+                    <p class="card-text">@item.Description</p>
+                    <p class="card-text"><strong>R@item.Price.ToString("F2")</strong></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

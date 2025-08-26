@@ -1,0 +1,59 @@
+﻿@model IEnumerable<abcRetail.Models.CustomerEntity>
+
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h1>Customer Management</h1>
+
+<p>
+   
+</p>
+
+<hr />
+
+<h4>Add New Customer</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddCustomer">
+            <div class="form-group">
+                <label for="CustomerName" class="control-label">Customer Name</label>
+                <input name="CustomerName" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="Email" class="control-label">Email</label>
+                <input name="Email" class="form-control" type="email" required />
+            </div>
+            <div class="form-group">
+                <label for="Address" class="control-label">Address</label>
+                <input name="Address" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Customer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+
+<h4>Existing Customers</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Address)</td>
+            </tr>
+        }
+    </tbody>
+</table>
